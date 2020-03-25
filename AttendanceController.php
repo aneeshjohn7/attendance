@@ -12,11 +12,13 @@ class AttendanceController extends Controller
     /**
      * checkIn
      * Allows users to check in for work within specified hours (between 9 AM and 5 PM) and records their attendance along with late time if they check in after 9 AM. If the user tries to check in outside of these hours or if they have already checked in for the day, appropriate error messages are displayed.
+     * Testing dates
      * @return void
      */
     public function checkIn()
     {
         // Gets the current time using now() and creates Carbon instances representing 9 AM and 5 PM.
+
         $currentTime = now();
         $nineAm = Carbon::createFromTime(9, 0, 0); // 9 AM
         $fivePm = Carbon::createFromTime(17, 0, 0); // 5 PM
@@ -54,11 +56,11 @@ class AttendanceController extends Controller
             "employee_id" => auth()->user()->id,
             "name" => auth()->user()->name,
             "department_name" =>
-                optional(auth()->user()->employee->department)
-                    ->department_name ?? "Not specified",
+            optional(auth()->user()->employee->department)
+                ->department_name ?? "Not specified",
             "designation_name" =>
-                optional(auth()->user()->employee->designation)
-                    ->designation_name ?? "Not specified",
+            optional(auth()->user()->employee->designation)
+                ->designation_name ?? "Not specified",
             "check_in" => $currentTime->format("H:i:s"),
             "check_out" => null,
             "select_date" => now(),
@@ -229,11 +231,11 @@ class AttendanceController extends Controller
         Leave::create([
             "employee_name" => auth()->user()->name,
             "department_name" =>
-                optional(auth()->user()->employee->department)
-                    ->department_name ?? "Not specified",
+            optional(auth()->user()->employee->department)
+                ->department_name ?? "Not specified",
             "designation_name" =>
-                optional(auth()->user()->employee->designation)
-                    ->designation_name ?? "Not specified",
+            optional(auth()->user()->employee->designation)
+                ->designation_name ?? "Not specified",
             "employee_id" => $userId,
             "from_date" => $fromDate,
             "to_date" => $toDate,
