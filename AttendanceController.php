@@ -23,6 +23,8 @@ class AttendanceController extends Controller
 
 
 
+
+
         $nineAm = Carbon::createFromTime(9, 0, 0); // 9 AM
         $fivePm = Carbon::createFromTime(17, 0, 0); // 5 PM
         // Checks if the current time is beyond 5 PM or before 9 AM. If so, it displays an error message indicating that the user cannot check in at that time and redirects back.
