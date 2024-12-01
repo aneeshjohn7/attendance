@@ -20,6 +20,9 @@ class AttendanceController extends Controller
         // Gets the current time using now() and creates Carbon instances representing 9 AM and 5 PM.
 
         $currentTime = now();
+
+
+
         $nineAm = Carbon::createFromTime(9, 0, 0); // 9 AM
         $fivePm = Carbon::createFromTime(17, 0, 0); // 5 PM
         // Checks if the current time is beyond 5 PM or before 9 AM. If so, it displays an error message indicating that the user cannot check in at that time and redirects back.
